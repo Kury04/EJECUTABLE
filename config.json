@@ -1,13 +1,14 @@
 {
-  "RUTA_EXPORTACION": "",
-  "RUTA_IMPORTACION": "",
-  "RUTA_TC": "",
-  "RUTA_ATRIBUTOS": "",
-  "RUTA_LOCAL": "",
+  "RUTA_EXPORTACION": "C:/Users/jparedes/Documents/Alfaparf PYTHON/Lector Facturas 2026/assets/2. OPERACIONES DE EXPORTACION 2026.xlsx",
+  "RUTA_IMPORTACION": "C:/Users/jparedes/Documents/Alfaparf PYTHON/Lector Facturas 2026/assets/1. OPERACIONES DE IMPORTACION 2026.xlsx",
+  "RUTA_TC": "C:/Users/jparedes/Documents/Alfaparf PYTHON/Lector Facturas 2026/assets/TC.xlsx",
+  "RUTA_ATRIBUTOS": "C:/Users/jparedes/Documents/Alfaparf PYTHON/Lector Facturas 2026/assets/atributos.txt",
+  "RUTA_LOCAL": "C:/Users/jparedes/Downloads/files/05 MAYO/27.MAYO",
   "F43": {
     "SOLUTRANS LOGISTICS S,A": "37000205",
     "C.H. Robinson Company, Inc": "37000217",
     "TRANSPLACE MEXICO LLC": "35003505",
+    "Transplace Mexico LLC": "35003505",
     "SAMSUNG SDS AMERICA INC": "37000212",
     "SAMSUNG SDS AMERICA": "37000212",
     "SAVINO DEL BENE": "37000127",
@@ -20,37 +21,66 @@
   "COLUMNAS_EXCEL": {
     "exportacion": {
       "sheet": "EXPO",
-      "usecols": [1, 17, 20, 25, 26, 27, 36, 46],
+      "usecols": [
+        1,
+        17,
+        20,
+        25,
+        26,
+        27,
+        36,
+        46
+      ],
       "skiprows": 1,
       "rename": {
         "Unnamed: 46": "REF SAP",
-        "Unnamed: 1": "MES"
+        "Unnamed: 1": "MES",
+        "Unnamed: 17": "INCOTERM",
+        "Unnamed: 20": "# PEDIMENTO",
+        "Unnamed: 25": "LOAD/ REF. FORWARDER",
+        "Unnamed: 26": "# FACTURA FLETE",
+        "Unnamed: 27": "FLETE USD",
+        "Unnamed: 36": "Total Factura"
       },
       "busqueda": [
-        "Unnamed: 17",
-        "Unnamed: 20",
-        "Unnamed: 25",
-        "Unnamed: 26",
-        "Unnamed: 27",
-        "Unnamed: 36",
-        "Unnamed: 39"
+        "INCOTERM",
+        "# PEDIMENTO",
+        "LOAD/ REF. FORWARDER",
+        "# FACTURA FLETE",
+        "FLETE USD",
+        "Total Factura"
       ]
     },
     "importacion": {
       "sheet": "OPERACIONES 2026",
-      "usecols": [1, 26, 31, 34, 38, 40, 44, 51],
+      "usecols": [
+        1,
+        26,
+        31,
+        34,
+        38,
+        40,
+        44,
+        51
+      ],
       "skiprows": 1,
       "rename": {
+        "Unnamed: 1": "MES",
         "Unnamed: 51": "REF SAP",
-        "MES": "MES"
+        "Unnamed: 26": "No. Factura",
+        "Unnamed: 31": "No. Factura AF",
+        "Unnamed: 34": "No. Factura AI",
+        "Unnamed: 38": "Factura",
+        "ETIQUETADO": "Factura AO",
+        "Unnamed: 44": "Factura AS"
       },
       "busqueda": [
-        "Unnamed: 26",
-        "Unnamed: 31",
-        "Unnamed: 34",
-        "Unnamed: 38",
-        "ETIQUETADO",
-        "Unnamed: 44"
+        "No. Factura",
+        "No. Factura AF",
+        "No. Factura AI",
+        "Factura",
+        "Factura AO",
+        "Factura AS"
       ]
     }
   },
@@ -61,7 +91,7 @@
       "UUID_Factura",
       "Fecha_Factura",
       "ClaveProdServ",
-      "Descripcion",
+      "Descripcion_Concepto",
       "ValorUnitario",
       "RFC_Receptor",
       "RFC_Emisor",
@@ -119,7 +149,9 @@
           "(?i)Amount Due\\s*:?\\s*([\\d,]+\\.\\d{2})\\s*(?:USD|MXN)?",
           "(?i)Total Charges in USDs Due\\s*:?\\s*([\\d,]+\\.\\d{2})"
         ],
-        "Moneda": ["(?i)Amount Due\\s*:?\\s*[\\d,]+\\.\\d{2}\\s*(USD|MXN)"]
+        "Moneda": [
+          "(?i)Amount Due\\s*:?\\s*[\\d,]+\\.\\d{2}\\s*(USD|MXN)"
+        ]
       }
     },
     "SOLUTRANS LOGISTICS S,A": {
@@ -137,7 +169,10 @@
           "(?i)Fecha\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": ["(?i)Moneda\\s*:\\s*(\\S+)", "(?i)Currency\\s*:\\s*(\\S+)"],
+        "Moneda": [
+          "(?i)Moneda\\s*:\\s*(\\S+)",
+          "(?i)Currency\\s*:\\s*(\\S+)"
+        ],
         "Total": [
           "(?i)Recibido Conforme Total\\s*[:\\s]*\\$?\\s*([\\d,]+\\.\\d{2})"
         ]
@@ -158,7 +193,10 @@
           "(?i)Fecha\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": ["(?i)Moneda\\s*:\\s*(\\S+)", "(?i)Currency\\s*:\\s*(\\S+)"],
+        "Moneda": [
+          "(?i)Moneda\\s*:\\s*(\\S+)",
+          "(?i)Currency\\s*:\\s*(\\S+)"
+        ],
         "Total": [
           "(?i)Recibido Conforme Total\\s*[:$]?\\s*([\\d,]+\\.\\d{2})",
           "(?i)Total\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"
@@ -169,7 +207,9 @@
       "formato_fecha": "%d/%m/%Y",
       "tax_id_fijo": "SSM0101235T6",
       "campos": {
-        "TAX ID": ["(?i)Tax ID[:\\s]*([\\d\\-]+)"],
+        "TAX ID": [
+          "(?i)Tax ID[:\\s]*([\\d\\-]+)"
+        ],
         "Invoice": [
           "(?i)INVOICE NO\\.?\\s*:?\\s*(\\S+)",
           "(?i)Invoice Number\\s*:?\\s*(\\S+)"
@@ -178,20 +218,30 @@
           "(?i)INVOICE DATE\\s*:?\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Due Date\\s*:?\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": ["(?i)CURRENCY\\.?\\s*:?\\s*(\\S+)"],
-        "Total": ["(?i)Total Amount\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"]
+        "Moneda": [
+          "(?i)CURRENCY\\.?\\s*:?\\s*(\\S+)"
+        ],
+        "Total": [
+          "(?i)Total Amount\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"
+        ]
       }
     },
     "Transplace Mexico LLC": {
       "formato_fecha": "%d/%m/%Y",
       "campos": {
-        "TAX ID": ["(?i)Tax ID\\s*:\\s*(\\S+)"],
-        "Invoice": ["(?i)Invoice No\\s*:\\s*(\\S+)"],
+        "TAX ID": [
+          "(?i)Tax ID\\s*:\\s*(\\S+)"
+        ],
+        "Invoice": [
+          "(?i)Invoice No\\s*:\\s*(\\S+)"
+        ],
         "Fecha": [
           "(?i)Due Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": ["(?i)(USD)"],
+        "Moneda": [
+          "(?i)(USD)"
+        ],
         "Total": [
           "(?i)USDs Due\\s*:\\s*\\$?\\s*([\\d,]+\\.\\d{2})",
           "(?i)Total Amount\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"
