@@ -1,8 +1,8 @@
 {
-  "RUTA_EXPORTACION": "C:/Users/jparedes/Documents/Alfaparf PYTHON/Lector Facturas 2026/assets/2. OPERACIONES DE EXPORTACION  2026.xlsx",
-  "RUTA_IMPORTACION": "C:/Users/jparedes/Documents/Alfaparf PYTHON/Lector Facturas 2026/assets/1. OPERACIONES DE IMPORTACION 2026.xlsx",
-  "RUTA_ATRIBUTOS": "C:/Users/jparedes/Documents/Alfaparf PYTHON/Lector Facturas 2026/assets/atributos.txt",
-  "RUTA_LOCAL": "C:\\Users\\jparedes\\Downloads\\files\\5. Mayo EXPO\\28 de mayo",
+  "RUTA_EXPORTACION": "",
+  "RUTA_IMPORTACION": "",
+  "RUTA_ATRIBUTOS": "",
+  "RUTA_LOCAL": "",
   "F43": {
     "SOLUTRANS LOGISTICS S,A": "37000205",
     "C.H. Robinson Company, Inc": "37000217",
@@ -20,17 +20,7 @@
   "COLUMNAS_EXCEL": {
     "exportacion": {
       "sheet": "EXPO",
-      "usecols": [
-        1,
-        16,
-        24,
-        25,
-        29,
-        31,
-        34,
-        38,
-        45
-      ],
+      "usecols": [1, 16, 24, 25, 29, 31, 34, 38, 45],
       "skiprows": 1,
       "rename": {
         "Unnamed: 1": "MES",
@@ -55,16 +45,7 @@
     },
     "importacion": {
       "sheet": "OPERACIONES 2026",
-      "usecols": [
-        1,
-        26,
-        31,
-        34,
-        38,
-        40,
-        44,
-        51
-      ],
+      "usecols": [1, 26, 31, 34, 38, 40, 44, 51],
       "skiprows": 1,
       "rename": {
         "Unnamed: 51": "REF SAP",
@@ -105,10 +86,8 @@
       "Subtotal_Factura",
       "Total_Factura",
       "REF SAP",
-      "Valor_TC",
       "F43",
       "MES",
-      "NoIdentificacion",
       "Importe_IVA_Concepto",
       "Nombre_Archivo_XML"
     ],
@@ -147,9 +126,7 @@
           "(?i)Amount Due\\s*:?\\s*([\\d,]+\\.\\d{2})\\s*(?:USD|MXN)?",
           "(?i)Total Charges in USDs Due\\s*:?\\s*([\\d,]+\\.\\d{2})"
         ],
-        "Moneda": [
-          "(?i)Amount Due\\s*:?\\s*[\\d,]+\\.\\d{2}\\s*(USD|MXN)"
-        ]
+        "Moneda": ["(?i)Amount Due\\s*:?\\s*[\\d,]+\\.\\d{2}\\s*(USD|MXN)"]
       }
     },
     "SOLUTRANS LOGISTICS S,A": {
@@ -167,10 +144,7 @@
           "(?i)Fecha\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": [
-          "(?i)Moneda\\s*:\\s*(\\S+)",
-          "(?i)Currency\\s*:\\s*(\\S+)"
-        ],
+        "Moneda": ["(?i)Moneda\\s*:\\s*(\\S+)", "(?i)Currency\\s*:\\s*(\\S+)"],
         "Total": [
           "(?i)Recibido Conforme Total\\s*[:\\s]*\\$?\\s*([\\d,]+\\.\\d{2})"
         ]
@@ -191,10 +165,7 @@
           "(?i)Fecha\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": [
-          "(?i)Moneda\\s*:\\s*(\\S+)",
-          "(?i)Currency\\s*:\\s*(\\S+)"
-        ],
+        "Moneda": ["(?i)Moneda\\s*:\\s*(\\S+)", "(?i)Currency\\s*:\\s*(\\S+)"],
         "Total": [
           "(?i)Recibido Conforme Total\\s*[:$]?\\s*([\\d,]+\\.\\d{2})",
           "(?i)Total\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"
@@ -205,9 +176,7 @@
       "formato_fecha": "%d/%m/%Y",
       "tax_id_fijo": "SSM0101235T6",
       "campos": {
-        "TAX ID": [
-          "(?i)Tax ID[:\\s]*([\\d\\-]+)"
-        ],
+        "TAX ID": ["(?i)Tax ID[:\\s]*([\\d\\-]+)"],
         "Invoice": [
           "(?i)INVOICE NO\\.?\\s*:?\\s*(\\S+)",
           "(?i)Invoice Number\\s*:?\\s*(\\S+)"
@@ -216,30 +185,20 @@
           "(?i)INVOICE DATE\\s*:?\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Due Date\\s*:?\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": [
-          "(?i)CURRENCY\\.?\\s*:?\\s*(\\S+)"
-        ],
-        "Total": [
-          "(?i)Total Amount\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"
-        ]
+        "Moneda": ["(?i)CURRENCY\\.?\\s*:?\\s*(\\S+)"],
+        "Total": ["(?i)Total Amount\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"]
       }
     },
     "Transplace Mexico LLC": {
       "formato_fecha": "%d/%m/%Y",
       "campos": {
-        "TAX ID": [
-          "(?i)Tax ID\\s*:\\s*(\\S+)"
-        ],
-        "Invoice": [
-          "(?i)Invoice No\\s*:\\s*(\\S+)"
-        ],
+        "TAX ID": ["(?i)Tax ID\\s*:\\s*(\\S+)"],
+        "Invoice": ["(?i)Invoice No\\s*:\\s*(\\S+)"],
         "Fecha": [
           "(?i)Due Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})",
           "(?i)Date\\s*:\\s*(\\d{2}/\\d{2}/\\d{4})"
         ],
-        "Moneda": [
-          "(?i)(USD)"
-        ],
+        "Moneda": ["(?i)(USD)"],
         "Total": [
           "(?i)USDs Due\\s*:\\s*\\$?\\s*([\\d,]+\\.\\d{2})",
           "(?i)Total Amount\\s*[:$]?\\s*([\\d,]+\\.\\d{2})"
